@@ -56,6 +56,7 @@ resource "aws_db_instance" "km_db" {
   identifier                = "km-db-${var.environment}"
   storage_encrypted         = true
   skip_final_snapshot       = true
+  backup_retention_period   = 1 
   final_snapshot_identifier = "km-db-${var.environment}-db-destroy-snapshot"
   kms_key_id                = aws_kms_key.km_db_kms_key.arn
   tags = merge(var.default_tags, {
